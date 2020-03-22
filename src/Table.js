@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 //Simple Components
-const TableHeader = () =>{
+const TableHeader = () => {
     return (
         <thead>
             <tr>
@@ -12,36 +12,26 @@ const TableHeader = () =>{
     )
 }
 
-const TableBody = () =>{
-    return (
-        <tbody>
-            <tr>
-                <td>Charlie</td>
-                <td>Janitor</td>
+const TableBody = props => {
+    const rows = props.peopleData.map((row, index) => {
+        return(
+            <tr key={index}>
+                <td>{row.name}</td>
+                <td>{row.job}</td>
             </tr>
-            <tr>
-                <td>Mac</td>
-                <td>Bouncer</td>
-            </tr>
-            <tr>
-                <td>Dee</td>
-                <td>Aspiring Actress</td>
-            </tr>
-            <tr>
-                <td>Dennis</td>
-                <td>Bartender</td>
-            </tr>
-        </tbody>
-    )
+        )
+    })
+    return <tbody>{rows}</tbody>
 }
 
 //Complex Component
 class Table extends Component{
     render(){
+        const { peopleData } = this.props
         return(
             <table>
                 <TableHeader />
-                <TableBody />
+                <TableBody peopleData = { peopleData } />
             </table>
         )
     }
