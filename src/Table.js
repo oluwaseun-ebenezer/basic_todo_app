@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 //Simple Components
 const TableHeader = () => {
@@ -18,23 +18,24 @@ const TableBody = props => {
             <tr key={index}>
                 <td>{row.name}</td>
                 <td>{row.job}</td>
+                <td>
+                    <button onClick={() => { props.removePerson(index) }}>Delete</button>
+                </td>
             </tr>
         )
     })
     return <tbody>{rows}</tbody>
 }
 
-//Complex Component
-class Table extends Component{
-    render(){
-        const { peopleData } = this.props
-        return(
-            <table>
-                <TableHeader />
-                <TableBody peopleData = { peopleData } />
-            </table>
-        )
-    }
+const Table = props => {
+    const { peopleData, removePerson } = props
+
+    return (
+        <table>
+            <TableHeader />
+            <TableBody peopleData = { peopleData } removePerson = { removePerson } />
+        </table>
+    )
 }
 
 export default Table

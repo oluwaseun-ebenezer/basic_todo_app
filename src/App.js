@@ -4,8 +4,9 @@ import React, { Component } from 'react';
 import Table from './Table.js'
 
 class App extends Component{
-    render(){
-        const people = [
+
+    state = {
+        people : [
             {
                 name: 'Charlie',
                 job: 'Janitor',
@@ -22,11 +23,25 @@ class App extends Component{
                 name: 'Dennis',
                 job: 'Bartender',
             },
-        ]
+        ],
+    }
 
+    removePerson = index =>{
+        const { people } = this.state
+
+        this.setState({
+            people: people.filter((person, i) => {
+                return i !== index
+            })
+        })
+    }
+
+    render(){    
+        const { people } = this.state
+        
         return(
             <div>
-                <Table peopleData = {people} />
+                <Table peopleData = { people } removePerson = { this.removePerson } />
             </div>
         )
     }
