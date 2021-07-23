@@ -1,0 +1,23 @@
+.TodoForm{
+    display: flex;
+    margin: 0;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: inherit;
+}
+
+input{
+    border: 1px;
+}
+
+input[type=text]{
+    border: 1px solid rgba(6, 81, 110, 0.904);
+}
+
+input[type=submit]{
+    background-color: rgba(6, 81, 110, 0.904);
+    color: white;
+    padding: 5px;
+    border: 1px solid rgba(6, 81, 110, 0.904);
+    cursor: pointer;
+}

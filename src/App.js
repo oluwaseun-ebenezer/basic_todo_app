@@ -1,53 +1,22 @@
 import React, { Component } from 'react';
 
-//Components
-import Table from './Table.js'
-import Form from './Form.js'
+import './App.css'
+
+import TodoForm from './components/TodoForm'
+import TodoList from './components/TodoList'
 
 class App extends Component{
-
-    state = {
-        people : [
-            {
-                name: 'Charlie',
-                job: 'Janitor',
-            },
-            {
-                name: 'Mac',
-                job: 'Bouncer',
-            },
-            {
-                name: 'Dee',
-                job: 'Aspiring Actress',
-            },
-            {
-                name: 'Dennis',
-                job: 'Bartender',
-            },
-        ],
-    }
-
-    removePerson = index =>{
-        const { people } = this.state
-
-        this.setState({
-            people: people.filter((person, i) => {
-                return i !== index
-            })
-        })
-    }
-
-    handleSubmit = person => {
-        this.setState({people: [...this.state.people, person]})
-    }
-
-    render(){    
-        const { people } = this.state
-        
+    
+    render(){
         return(
-            <div>
-                <Table peopleData = { people } removePerson = { this.removePerson } />
-                <Form handleSubmit={ this.handleSubmit } />
+            <div className="App">
+                <div className="App-Header">
+                    <h1>TODO APP</h1>
+                </div>
+                <div className="App-Container">
+                    <TodoForm />
+                    <TodoList />
+                </div>
             </div>
         )
     }
